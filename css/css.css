@@ -101,7 +101,7 @@ body {
     align-items: center;
     margin-right: 2rem;
 }
-.nav_btn:hover {
+.nav_btn:hover, .footer_nav_btn:hover {
     color: white;
     text-shadow: 0 0 20px white;
 }
@@ -130,7 +130,7 @@ body {
     align-items: center;
 }
 
-.header-Img-logo-container a {
+.header-Img-logo-container a, .footer-Img-logo-container a {
     color: white;
     width: 100%;
     text-decoration: none;
@@ -337,9 +337,52 @@ body {
     align-items: center;
     grid-area: photo;
 }
+.footer-img-container {
+    flex: 1 1 60%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-text-container {
+    flex: 1 1 30%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 12px;
+    flex-direction: row;
+}
+.footer-copyright-text {
+    flex: 1 1 10%;
+    color: white;
+    padding: 10px;
+}
+#Flex-column {
+    flex-direction: column;
+}
 
 
 
+
+.footer_nav_btn {
+    position: relative;
+    text-decoration: none;
+    border: none;
+    font-size: 110%;
+    color: #ccc;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-Img-logo-container {
+    position: relative;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
@@ -501,12 +544,10 @@ body {
 
 
 
-#Bowling-Location-container {
+#Bowling-Location-container, .footer-container {
     position: relative;
     width: 100%;
 }
-
-
 
 
 
@@ -614,6 +655,7 @@ body {
     text-align: center;
     position: relative;
     margin: 0.5rem;
+    margin-bottom: 1.5rem;
     transform: scale(1);
     transition: 0.5s transform;
   }
@@ -688,7 +730,9 @@ body {
     #Welcome-text-container h1 {
         font-size: 220%;
     }
-
+    .footer-copyright-text p {
+        font-size: 13px;
+    }
     .test0 p {
         font-size: 15px;
     }
@@ -717,10 +761,13 @@ body {
         flex: 1 1 100%;
         gap: 0px;
     }
+    .footer-text-container {
+        flex-direction: column;
+    }
     .Read-more-btn {
         padding: 8px 18px;
     }
-    #listen-btn {
+    #listen-btn, .footer_nav_btn {
         padding: 7px 18%;
     }
 
@@ -777,7 +824,8 @@ body {
     .test0 h1 {
         font-size: 25px;
     }
-    .test1 p, .test0 p{
+
+    .test1 p, .test0 p, .footer-copyright-text p {
         text-align: center;
         font-size: 12px;
     }

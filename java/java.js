@@ -221,7 +221,9 @@ if ( document.URL.includes("history.html") ) {
     test0.style.justifyContent = "space-between";
     test0.classList.add("center");
 
-    var audio1 = new Audio("image/BowlingAlleyAmbience.mp3");
+    var audio = new Audio();
+    var playlist = new Array("image/BowlingAlleyAmbience.mp3", "image/BowlingDuckpinSound.mp3", "image/BowlingCandlePinSound.mp3");
+
     var listenBtn = document.getElementById("listen-btn");
     var pagenumber = document.getElementById("pagenotypeofbowling");
     let prevpg = document.querySelector("#prev-pg-no");
@@ -234,7 +236,8 @@ if ( document.URL.includes("history.html") ) {
     var pgno = 1;
 
     listenBtn.addEventListener("click", function() {
-        audio1.play();
+        audio.src = playlist[pgno-1];
+        audio.play();
     });
 
     prevpg.addEventListener("click", function() {
@@ -243,6 +246,8 @@ if ( document.URL.includes("history.html") ) {
             pgno = 3;
         }
         pagenumber.innerHTML = pgno + "/3";
+        audio.src = playlist[pgno-1];
+        console.log(audio.src);
         ChangeDescTypeBowling(pgno);
     });
     nextpg.addEventListener("click", function() {
@@ -251,6 +256,8 @@ if ( document.URL.includes("history.html") ) {
             pgno = 1;
         }
         pagenumber.innerHTML = pgno + "/3";
+        audio.src = playlist[pgno-1];
+        console.log(audio.src);
         ChangeDescTypeBowling(pgno);
     });
 
@@ -405,24 +412,33 @@ if ( document.URL.includes("simulator.html") ) {
     }
     
     let cir = document.querySelector("#blue-ball");
-    const cirPos = {x: 0, y: 0, width: 0};
+    var cirPos = {x: 0, y: 0, width: 0};
     var down = false;
 
     var ele = document.getElementById("Bowling-Simulator-img-container");
     ele.addEventListener("mousemove", myfunction);
 
     function myfunction(event) {
-        requestAnimationFrame(function() {
-        let bnds = event.target.getBoundingClientRect();
-        let mouseX = event.clientX - bnds.x;
-        let mouseY = event.clientY - bnds.y;
+        let bnds = ele.getBoundingClientRect();
+        let mouseX = event.clientX - bnds.left;
+        let mouseY = event.clientY - bnds.top;
         setCirPos(mouseX, mouseY, 30);
+        if (cirPos.x <= 0) {
+            cirPos.x = 0;
+        }
+        if (cirPos.x >= bnds.width) {
+            cirPos.x = bnds.width;
+        }
+        if (cirPos.y <= 0) {
+            cirPos.y = 0;
+        }
+        if (cirPos.y >= bnds.height) {
+            cirPos.y = bnds.height;
+        }
         cir.style.left = cirPos.x + "px";
         cir.style.top = cirPos.y + "px";
-        });
     }
     function setCirPos(xpos,ypos, wid) {
-        cirPos.x = xpos;
         cirPos.x = xpos;
         cirPos.y = ypos;
         cirPos.width = wid;
