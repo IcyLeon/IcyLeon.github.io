@@ -94,11 +94,6 @@ if ( document.URL.includes("index.html") ) {
         }
     }
 
-    function check(cir, other) {
-        var distance = Math.sqrt((cir.x - other.x) * (cir.x - other.x) + (cir.y - other.y) * (cir.y -  other.y));
-        return distance < (cir.width/2 + other.width/2);
-    }
-
 
     var time = 500;
     function StartBowlingBallAnimation() {
@@ -217,9 +212,9 @@ if ( document.URL.includes("index.html") ) {
 
 if ( document.URL.includes("history.html") ) {
     MaxSlide = 3;
-    var test0 = document.getElementsByClassName("test2")[0];
-    test0.style.justifyContent = "space-between";
-    test0.classList.add("center");
+    var descbtn = document.getElementsByClassName("content-text-btn-container")[0];
+    descbtn.style.justifyContent = "space-between";
+    descbtn.classList.add("center");
 
     var audio = new Audio();
     var playlist = new Array("image/BowlingAlleyAmbience.mp3", "image/BowlingDuckpinSound.mp3", "image/BowlingCandlePinSound.mp3");
@@ -247,7 +242,6 @@ if ( document.URL.includes("history.html") ) {
         }
         pagenumber.innerHTML = pgno + "/3";
         audio.src = playlist[pgno-1];
-        console.log(audio.src);
         ChangeDescTypeBowling(pgno);
     });
     nextpg.addEventListener("click", function() {
@@ -257,7 +251,6 @@ if ( document.URL.includes("history.html") ) {
         }
         pagenumber.innerHTML = pgno + "/3";
         audio.src = playlist[pgno-1];
-        console.log(audio.src);
         ChangeDescTypeBowling(pgno);
     });
 
@@ -353,10 +346,17 @@ if ( document.URL.includes("simulator.html") ) {
     var bowlingheaderinfo = document.querySelector(".content-text-container h1");
     var bowlingheaderdesc = document.querySelector(".content-text-container p");
     var bowlingpopoutimg = document.querySelector(".content-img-container img");
+    var bowlingball_type = document.querySelectorAll(".Bowling-Ball-Desc img");
     var popoutidx = 0;
+    var bowlingballindex = 0;
     var deg = 0;
     var rotateball;
-    
+    var pagenumber = document.getElementById("pagenotypeofbowling");
+    var pgno = 1;
+    let prevpg = document.querySelector("#prev-pg-no");
+    let nextpg = document.querySelector("#next-pg-no");
+    let Bowlingballtypearray = ["image/Bowling-ball-Reactive.png","image/Bowling-ball-Strike.png","image/Bowling-ball-Plastic.png"];
+
     for (let i = 0; i < imgbtn.length; i++) {
         imgbtn[i].addEventListener("click", function() {
             document.getElementById("Popout").style.display = 'flex';
@@ -393,42 +393,142 @@ if ( document.URL.includes("simulator.html") ) {
                 break;
         }
     }
-    bowlingpopoutimg.addEventListener("mouseover", function(event) {
-        if (!rotateball) {
-            rotateball = setInterval(rotateballanimation, 5);
-        }
-    });
-    bowlingpopoutimg.addEventListener("mouseout", function(event) {
-        deg = 0;
-        bowlingpopoutimg.style.transform = "rotate(" + deg + "deg)";
-        clearInterval(rotateball);
-        rotateball = null;
-    });
+    for (let i = 0; i < bowlingball_type.length; i++) {
+        bowlingball_type[i].addEventListener("mouseover", function() {
+            if (!rotateball) {
+                rotateball = setInterval(rotateballanimation, 5);
+            }
+            bowlingballindex = i;
+        });
+    }
+    for (let i = 0; i < bowlingball_type.length; i++) {
+        bowlingball_type[i].addEventListener("mouseout", function() {
+            deg = 0;
+            bowlingball_type[i].style.transform = "rotate(" + deg + "deg)";
+            clearInterval(rotateball);
+            rotateball = null;
+        });
+    }
     function rotateballanimation() {
-        if (popoutidx == 1) {
-            bowlingpopoutimg.style.transform = "rotate(" + deg + "deg)";
-            deg += 2;
-        }
+        bowlingball_type[bowlingballindex].style.transform = "rotate(" + deg + "deg)";
+        deg += 2;
     }
     
-    let cir = document.querySelector("#blue-ball");
-    var cirPos = {x: 0, y: 0, width: 0};
-    var down = false;
 
+
+
+    prevpg.addEventListener("click", function() {
+        pgno--;
+        if (pgno < 1) {
+            pgno = 3;
+        }
+        pagenumber.innerHTML = pgno + "/3";
+        ChangeDescTypeBowling(pgno);
+    });
+    nextpg.addEventListener("click", function() {
+        pgno++;
+        if (pgno > 3) {
+            pgno = 1;
+        }
+        pagenumber.innerHTML = pgno + "/3";
+        ChangeDescTypeBowling(pgno);
+    });
+    function ChangeDescTypeBowling(i) {
+        switch(i) {
+        case 1:
+            document.querySelector("#Bowling-Type-header").innerHTML = "REACTIVE BALL";
+            document.querySelectorAll("#Bowling-Type-Desc ul li")[0].innerHTML = "<span>Material: </span> Resin";
+            document.querySelectorAll("#Bowling-Type-Desc ul li")[1].innerHTML = "<span>Hook: </span> Insane";
+            document.querySelectorAll("#Bowling-Type-Desc ul li")[2].innerHTML = "<span>Life Expectency: </span> 5-10 years";
+            break;
+        case 2:
+            document.querySelector("#Bowling-Type-header").innerHTML = "STRIKE BALL";
+            document.querySelectorAll("#Bowling-Type-Desc ul li")[0].innerHTML = "<span>Material: </span> Urethane";
+            document.querySelectorAll("#Bowling-Type-Desc ul li")[1].innerHTML = "<span>Hook: </span> Normal";
+            document.querySelectorAll("#Bowling-Type-Desc ul li")[2].innerHTML = "<span>Life Expectency: </span> 5-10 years";
+            break;
+        case 3:
+            document.querySelector("#Bowling-Type-header").innerHTML = "SPARE BALL";
+            document.querySelectorAll("#Bowling-Type-Desc ul li")[0].innerHTML = "<span>Material: </span> Plastic/Polyester (Shiny)";
+            document.querySelectorAll("#Bowling-Type-Desc ul li")[1].innerHTML = "<span>Hook: </span> Weak";
+            document.querySelectorAll("#Bowling-Type-Desc ul li")[2].innerHTML = "<span>Life Expectency: </span> 5-10 years";
+            break;
+        }
+        document.querySelector("#bowling-ball-type").src = Bowlingballtypearray[i-1];
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    let cir = document.querySelector("#Bowling-Ball-Simulator");
+    const cirPos = {x: 0, y: 0, width: 0};
+    let clickball = false;
+    var BowlingAnimeStarts;
     var ele = document.getElementById("Bowling-Simulator-img-container");
+    var BowlingPinsSimulator = document.querySelector("#Bowling-pin-arrangement").querySelectorAll(".blue-ball");
     ele.addEventListener("mousemove", myfunction);
+    ele.addEventListener("click", function() {
+        clickball = true;
+        if (!BowlingAnimeStarts) {
+            BowlingAnimeStarts = setInterval(StartAnimationBowling, 1);
+        }
+    });
+
+    function StartAnimationBowling() {
+        let bnds = ele.getBoundingClientRect();
+        if (cirPos.x >= bnds.width) {
+            clickball = false;
+            cirPos.x = 0;
+
+            if (CheckIfEmpty()) {
+                for (let i = 0; i < BowlingPinsSimulator.length;i++) {
+                    BowlingPinsSimulator[i].style.display = "block";
+                }
+            }
+            clearInterval(BowlingAnimeStarts);
+            BowlingAnimeStarts = null;
+        }
+        for (let i = 0; i < BowlingPinsSimulator.length;i++){
+            const pinpos = {x:0,y:0,width:0};
+            pinpos.x = document.querySelector("#Bowling-pin-arrangement").offsetLeft;
+            pinpos.y = BowlingPinsSimulator[i].offsetTop;
+            pinpos.width = BowlingPinsSimulator[i].offsetWidth;
+            if (check(cirPos, pinpos)) {
+                BowlingPinsSimulator[i].style.display = "none";
+            }
+        }
+        cirPos.x++;
+        cir.style.left = cirPos.x + "px";
+        cir.style.top = cirPos.y + "px";
+    }
 
     function myfunction(event) {
         let bnds = ele.getBoundingClientRect();
         let mouseX = event.clientX - bnds.left;
         let mouseY = event.clientY - bnds.top;
-        setCirPos(mouseX, mouseY, 30);
+        if (!clickball) {
+            setCirPos(mouseX, mouseY, 30);
+            if (cirPos.x >= 41) {
+                cirPos.x = 41;
+            }
+        }
+
         if (cirPos.x <= 0) {
             cirPos.x = 0;
         }
         if (cirPos.x >= bnds.width) {
             cirPos.x = bnds.width;
         }
+
+
         if (cirPos.y <= 0) {
             cirPos.y = 0;
         }
@@ -443,7 +543,20 @@ if ( document.URL.includes("simulator.html") ) {
         cirPos.y = ypos;
         cirPos.width = wid;
     }
-      
+
+    function CheckIfEmpty() {
+        for (let i = 0; i < BowlingPinsSimulator.length; i++){
+            if (BowlingPinsSimulator[i].style.display != "none") {
+                return false;
+            }
+        }
+        return true;
+    }
+
+}
+function check(cir, other) {
+    var distance = Math.sqrt((cir.x - other.x) * (cir.x - other.x) + (cir.y - other.y) * (cir.y -  other.y));
+    return distance < (cir.width/2 + other.width/2);
 }
 
 

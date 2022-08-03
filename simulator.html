@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/css.css" />
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>History - Bowling</title>
+    <title>Simulator - Bowling</title>
     <script src="java/java.js" defer></script>
 </head>
 
@@ -54,15 +54,15 @@
                 <img src="image/bowling-pin-simulator.png" alt="Pin">
             </div>
             <div class="content-text-container">
-                <div class="test0">
+                <div class="content-text-header-container">
                     <h1>BOWLING PIN</h1>
                 </div>
-                <div class="test1">
+                <div class="content-text-desc-container">
                     <p>
                         Bowling pins are constructed by gluing blocks of rock maple wood into the approximate shape, and then turning on a lathe. After the lathe shapes the pin, it is coated with a plastic material, painted, and covered with a glossy finish.
                     </p>
                 </div>
-                <div class="test2">
+                <div class="content-text-btn-container">
                     <div id="content-img-Personal-Experience-container">
                         <a class="probtn">
                             <img src="image/bowling-pin-simulator.png" alt="Pin">
@@ -80,8 +80,7 @@
     </div>
 
 
-
-    <div id="Bowling-Simulator-container">
+    <div id="Bowling-Location-container">
         <div class="content-header-container">
             <h1>SIMULATOR</h1>
             <p>ROLL THE BALL</p>
@@ -91,24 +90,101 @@
             <div id="Bowling-simulation-game-content-container">
                 <div id="Bowling-Simulator-img-container">
                     <img src="image/Bowling-Lane.png" alt="Bowling">
-                    <div id="blue-ball"></div>
+                    <div class="blue-ball" id="Bowling-Ball-Simulator"></div>
+
+                    <div id="Bowling-pin-arrangement">
+                        <div class="blue-ball"></div>
+                        <div class="blue-ball"></div>
+                        <div class="blue-ball"></div>
+                        <div class="blue-ball"></div>
+                    </div>
                 </div>
                 <div id="Bowling-Simulator-text-container">
-                    <div class="test0">
+                    <div class="content-text-header-container">
                         <h1>INSTRUCTION</h1>
                     </div>
-                    <div class="test1">
+                    <div class="content-text-desc-container">
                         <p>
-                            placeholder
+                            Move the mouse for the direction of the ball to be roll in a straight line. Click on the lane to shoot the Ball. Pins reset if all pins are cleared.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </div>
+
+
+
+
+
+
+
+
+    <div id="Bowling-Simulator-container">
+        <div class="content-header-container">
+            <h1>BOWLING BALL</h1>
+            <p>BEST BRAND 2022</p>
+        </div>
+        <div class="Info-content-area-container">
+            <div class="content-container">
+                <div class="content-img-container" id="flex-row-wrap">
+                    <div class="Bowling-Ball-Desc" id="flex-directionColumn">
+                        <img id="bowlingpic" src="image/Bowling-ball.png" alt="Bowling">
+                        <p>Storm</p>
+                    </div>
+                    <div class="Bowling-Ball-Desc" id="flex-directionColumn">
+                        <img id="bowlingpic" src="image/Bowling-ball-Ebonite.png" alt="Bowling">
+                        <p>Ebonite</p>
+                    </div>
+                    <div class="Bowling-Ball-Desc" id="flex-directionColumn">
+                        <img id="bowlingpic" src="image/Bowling-ball-Brunswick.png" alt="Bowling">
+                        <p>Brunswick</p>
+                    </div>
+                    <div class="Bowling-Ball-Desc" id="flex-directionColumn">
+                        <img id="bowlingpic" src="image/Bowling-ball-Motiv.png" alt="Bowling">
+                        <p>Motiv</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-header-container">
+            <p>TYPES OF BOWLING BALL</p>
+        </div>
+        <div class="Info-content-area-container">
+            <div class="content-container" style="padding-top:0;">
+                <div class="content-img-container" id="flex-directionColumn">
+                    <img id="bowling-ball-type" src="image/Bowling-ball-Reactive.png" alt="Bowling">
+                </div>
+                <div class="content-text-container">
+                    <div class="content-text-header-container">
+                        <h1 id="Bowling-Type-header">REACTIVE BALL</h1>
+                    </div>
+                    <div class="content-text-desc-container">
+                        <div id="Bowling-Type-Desc">
+                            <ul>
+                                <li><span>Material:</span> Resin</li>
+                                <li><span>Hook:</span> Insane</li>
+                                <li><span>Life Expectency:</span> 5-10 years</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-text-btn-container" id="position-subtext">
+                        <a class="prev-btn" id="prev-pg-no">
+                            <img src="image/prev-red.png" alt="Arrow">
+                        </a>
+                        <p id="pagenotypeofbowling">1/3</p>
+                        <a class="next-btn" id="next-pg-no">
+                            <img src="image/next-red.png" alt="Arrow">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <!-- Footer contents-->
     <div class="footer-container">
