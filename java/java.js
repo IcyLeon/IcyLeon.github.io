@@ -8,7 +8,7 @@ let imagesrc = document.getElementById("banner-img");
 const Imglist = ["image/Bowling-Pic1.png", "image/Bowling-Pic2.png", "image/Bowling-Pic3.png", "image/Bowling-Pic4.png"];
 
 
-if ( document.URL.includes("index.html") ) {
+if ( document.URL.includes("index.html")) {
     MaxSlide = 4;
     prev.addEventListener("click", function() {
         stopAnimate();
@@ -73,6 +73,55 @@ if ( document.URL.includes("index.html") ) {
         timeoutHandle = null;
     }
 
+
+
+    var ProBowlersIcon = document.getElementsByClassName("probtn");
+    var ProBowlerNameLoc = document.getElementById("pro-player-name");
+    var ProBowlerTitleLoc = document.getElementById("pro-player-title");
+    var ProBowlerDescLoc = document.getElementById("pro-player-desc");
+    for (let i = 0; i < ProBowlersIcon.length; i++) {
+        ProBowlersIcon[i].children[0].addEventListener("click", ProBowlerIMGchanger);
+        ProBowlersIcon[i].children[0].addEventListener("click", function() {
+            switch(i) {
+                case 0:
+                    ProBowlerNameLoc.innerHTML = "JASON BELMONTE";
+                    ProBowlerTitleLoc.innerHTML = "National finals: 30 PBA Tour (14 majors)";
+                    ProBowlerDescLoc.innerHTML = "Jason Belmonte is an Australian professional ten-pin bowler. He plays on the PBA Tour in the United States and in world events. He is known for being one of the first bowlers to gain media attention for using the two handed approach style to deliver his shot. He has won 30 PBA titles, including a record 14 major championships which makes him the only one of eight bowlers in PBA tour history to achieve 30 wins.";
+                    break;
+                case 1:
+                    ProBowlerNameLoc.innerHTML = "WES MALOTT";
+                    ProBowlerTitleLoc.innerHTML = "National finals: 10 PBA Tour (1 majors)";
+                    ProBowlerDescLoc.innerHTML = "Wes Malott is an American professional ten-pin bowler and member of the Professional Bowlers Association (PBA). Originally from Pflugerville, Texas, he now resides in Fort Wayne, Indiana. He has won ten PBA Tour titles, and was the 2008–09 Chris Schenkel PBA Player of the Year. He won his lone major championship at the 2012–13 U.S. Open, and has finished runner-up in five other PBA major tournaments.";
+                    break;
+                case 2:
+                    ProBowlerNameLoc.innerHTML = "CHRIS BARNES";
+                    ProBowlerTitleLoc.innerHTML = "National finals: 19 PBA Tour (3 majors)";
+                    ProBowlerDescLoc.innerHTML = "Chris Barnes is an American professional bowler and member of the Professional Bowlers Association (PBA), who currently competes on both the PBA Tour and PBA50 Tour. He has also competed internationally as a member of Team USA. Barnes, a right-handed bowler, has been one of the leading professionals on the tour. He has won 19 PBA Tour titles and over $2.4 million (U.S.) in total prize money during his 20-year career.";
+                    break;
+            }
+        });
+    }
+    function ProBowlerIMGchanger(event) {
+        document.getElementById("ProBowlerIMG").src = event.target.src;
+    }
+
+
+    function init() {
+        setSlideIdx(slidesIDX);
+        startAnimate();
+    }
+    document.addEventListener("DOMContentLoaded", init);
+}
+
+function init() {
+    setSlideIdx(slidesIDX);
+    startAnimate();
+}
+document.addEventListener("DOMContentLoaded", init);
+
+
+
+if (document.URL.includes("index.html") || document.URL.includes("howtoplay.html")) {
     var BowlingBallAnimation;
     var isCollided = false;
     var isCollided2 = false;
@@ -167,47 +216,10 @@ if ( document.URL.includes("index.html") ) {
         }
         Ball.style.opacity = opacityVal;
     }
-
-
-
-    var ProBowlersIcon = document.getElementsByClassName("probtn");
-    var ProBowlerNameLoc = document.getElementById("pro-player-name");
-    var ProBowlerTitleLoc = document.getElementById("pro-player-title");
-    var ProBowlerDescLoc = document.getElementById("pro-player-desc");
-    for (let i = 0; i < ProBowlersIcon.length; i++) {
-        ProBowlersIcon[i].children[0].addEventListener("click", ProBowlerIMGchanger);
-        ProBowlersIcon[i].children[0].addEventListener("click", function() {
-            switch(i) {
-                case 0:
-                    ProBowlerNameLoc.innerHTML = "JASON BELMONTE";
-                    ProBowlerTitleLoc.innerHTML = "National finals: 30 PBA Tour (14 majors)";
-                    ProBowlerDescLoc.innerHTML = "Jason Belmonte is an Australian professional ten-pin bowler. He plays on the PBA Tour in the United States and in world events. He is known for being one of the first bowlers to gain media attention for using the two handed approach style to deliver his shot. He has won 30 PBA titles, including a record 14 major championships which makes him the only one of eight bowlers in PBA tour history to achieve 30 wins.";
-                    break;
-                case 1:
-                    ProBowlerNameLoc.innerHTML = "WES MALOTT";
-                    ProBowlerTitleLoc.innerHTML = "National finals: 10 PBA Tour (1 majors)";
-                    ProBowlerDescLoc.innerHTML = "Wes Malott is an American professional ten-pin bowler and member of the Professional Bowlers Association (PBA). Originally from Pflugerville, Texas, he now resides in Fort Wayne, Indiana. He has won ten PBA Tour titles, and was the 2008–09 Chris Schenkel PBA Player of the Year. He won his lone major championship at the 2012–13 U.S. Open, and has finished runner-up in five other PBA major tournaments.";
-                    break;
-                case 2:
-                    ProBowlerNameLoc.innerHTML = "CHRIS BARNES";
-                    ProBowlerTitleLoc.innerHTML = "National finals: 19 PBA Tour (3 majors)";
-                    ProBowlerDescLoc.innerHTML = "Chris Barnes is an American professional bowler and member of the Professional Bowlers Association (PBA), who currently competes on both the PBA Tour and PBA50 Tour. He has also competed internationally as a member of Team USA. Barnes, a right-handed bowler, has been one of the leading professionals on the tour. He has won 19 PBA Tour titles and over $2.4 million (U.S.) in total prize money during his 20-year career.";
-                    break;
-            }
-        });
-    }
-    function ProBowlerIMGchanger(event) {
-        document.getElementById("ProBowlerIMG").src = event.target.src;
-    }
-
-
-    function init() {
-        setSlideIdx(slidesIDX);
-        startAnimate();
-        BowlingAnimation();
-    }
-    document.addEventListener("DOMContentLoaded", init);
+    BowlingAnimation();
 }
+
+
 
 
 if ( document.URL.includes("history.html") ) {
@@ -554,6 +566,26 @@ if ( document.URL.includes("simulator.html") ) {
     }
 
 }
+
+
+if ( document.URL.includes("howtoplay.html") ) {
+    var expand = document.querySelector(".Read-more-btn");
+    var contentexpand = document.querySelector("#steps-approach-container");
+    expand.addEventListener("click", function(event) {
+        if (event.target.innerHTML == "Expand") {
+            event.target.innerHTML = "Collaspe";
+        }
+        else {
+            event.target.innerHTML = "Expand";
+        }
+        if (contentexpand.style.maxHeight){
+            contentexpand.style.maxHeight = null;
+          } else {
+            contentexpand.style.maxHeight = contentexpand.scrollHeight + "px";
+          } 
+    });
+}
+
 function check(cir, other) {
     var distance = Math.sqrt((cir.x - other.x) * (cir.x - other.x) + (cir.y - other.y) * (cir.y -  other.y));
     return distance < (cir.width/2 + other.width/2);

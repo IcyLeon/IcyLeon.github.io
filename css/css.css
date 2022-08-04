@@ -327,7 +327,11 @@ body {
     color:#a9afc3;
     font-weight: bold;
 }
-
+#steps-approach-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s;
+}
 
 .content-img-container {
     flex: 1 1 30%;
@@ -495,13 +499,26 @@ body {
 
 
 
-#Bowling-animation-container, #Bowling-Pinsetter-container, #Bowling-Simulator-container {
+#Bowling-animation-container, #Bowling-Pinsetter-container, #Bowling-Ball-Info-container, #Bowling-Tutorial-container, #Bowling-Location-container {
     position: relative;
     background-color: #0f161c;
     width: 100%;
     min-height: 80px;
     box-shadow: 0px 0px 40px 5px black;
 }
+#Bowling-Experience-container, #Bowling-type-container, #Bowling-Simulation-container {
+    position: relative;
+    width: 100%;
+    min-height: 80px;
+}
+
+
+#Margin-top-header {
+    margin-top: 50px;
+}
+
+
+
 .bowling-animation-content-container {
     position: relative;
     height: 100%;
