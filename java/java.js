@@ -1,4 +1,4 @@
-let slidesIDX = 0;
+var slidesIDX = 0;
 let MaxSlide = 4;
 var timeoutHandle;
 let dot = document.getElementsByClassName("Dot");
@@ -57,7 +57,7 @@ if ( document.URL.includes("history.html") ) {
         switch(i) {
         case 1:
             document.querySelector("#Bowling-Type-header").innerHTML = "TEN-PIN BOWLING";
-            typeofbowlingdesc.innerHTML = "Ten-pin bowling is a type of bowling in which a bowler rolls a bowling ball down a wood or synthetic lane toward ten pins positioned evenly in four rows in an equilateral triangle. The objective is to knock down all ten pins on the first roll of the ball a strike, or failing that, on the second roll a spare."
+            typeofbowlingdesc.innerHTML = "Ten-pin bowling is a type of bowling in which a bowler rolls a bowling ball down a wood or synthetic lane toward ten pins positioned evenly in four rows in an equilateral triangle. The objective is to knock down all ten pins on the first roll of the ball a strike, or failing that, on the second roll a spare.";
             break;
         case 2:
             document.querySelector("#Bowling-Type-header").innerHTML = "DUCKPIN BOWLING";
