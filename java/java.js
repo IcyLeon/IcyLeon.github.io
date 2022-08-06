@@ -465,7 +465,7 @@ else {
 
 
 
-if (!document.URL.includes("simulator.html") && !document.URL.includes("history.html")) {
+if (!document.URL.includes("simulator.html") || !document.URL.includes("history.html")) {
     var BowlingBallAnimation;
     var isCollided = false;
     var isCollided2 = false;
