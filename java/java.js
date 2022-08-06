@@ -4,221 +4,10 @@ var timeoutHandle;
 let dot = document.getElementsByClassName("Dot");
 let prev = document.querySelector(".prev-btn");
 let next = document.querySelector(".next-btn");
+var prevpg = document.querySelector("#prev-pg-no");
+var nextpg = document.querySelector("#next-pg-no");
 let imagesrc = document.getElementById("banner-img");
 const Imglist = ["image/Bowling-Pic1.png", "image/Bowling-Pic2.png", "image/Bowling-Pic3.png", "image/Bowling-Pic4.png"];
-
-
-if ( document.URL.includes("index.html")) {
-    MaxSlide = 4;
-    prev.addEventListener("click", function() {
-        stopAnimate();
-        if (!timeoutHandle) {
-            if (slidesIDX <= 0) {
-                slidesIDX = MaxSlide - 1;
-            }
-            else {
-                slidesIDX--;
-            }
-            startAnimate();
-            setSlideIdx(slidesIDX);
-        }
-    });
-    next.addEventListener("click", function() {
-        stopAnimate();
-        if (!timeoutHandle) {
-            if (slidesIDX >= Imglist.length - 1) {
-                slidesIDX = 0;
-            }
-            else {
-                slidesIDX++;
-            }
-            startAnimate();
-            setSlideIdx(slidesIDX);
-        }
-    });
-
-    for (let i = 0; i < dot.length; i++) {
-        dot[i].addEventListener("click", function() {
-            setSlideIdx(i);
-        });
-    }
-    function setSlideIdx(n) {
-        slidesIDX = n;
-        for (let i = 0; i < dot.length; i++) {
-            dot[i].addEventListener("click", ChangeImageBanner(slidesIDX));
-            dot[i].className = dot[i].className.replace(" active", "");
-        }
-        dot[slidesIDX].className += " active";
-    }
-    
-    function ChangeImageBanner(index) {
-        imagesrc.src = Imglist[index];
-    }
-    function slidesChanger() {
-        if (slidesIDX >= Imglist.length) {
-            slidesIDX = 0;
-        }
-        setSlideIdx(slidesIDX)
-        slidesIDX++;
-
-    }
-
-    function startAnimate() {
-        if (!timeoutHandle) {
-            timeoutHandle = setInterval(slidesChanger, 3000);
-        }
-    }
-    function stopAnimate() {
-        clearInterval(timeoutHandle);
-        timeoutHandle = null;
-    }
-
-
-
-    var ProBowlersIcon = document.getElementsByClassName("probtn");
-    var ProBowlerNameLoc = document.getElementById("pro-player-name");
-    var ProBowlerTitleLoc = document.getElementById("pro-player-title");
-    var ProBowlerDescLoc = document.getElementById("pro-player-desc");
-    for (let i = 0; i < ProBowlersIcon.length; i++) {
-        ProBowlersIcon[i].children[0].addEventListener("click", ProBowlerIMGchanger);
-        ProBowlersIcon[i].children[0].addEventListener("click", function() {
-            switch(i) {
-                case 0:
-                    ProBowlerNameLoc.innerHTML = "JASON BELMONTE";
-                    ProBowlerTitleLoc.innerHTML = "National finals: 30 PBA Tour (14 majors)";
-                    ProBowlerDescLoc.innerHTML = "Jason Belmonte is an Australian professional ten-pin bowler. He plays on the PBA Tour in the United States and in world events. He is known for being one of the first bowlers to gain media attention for using the two handed approach style to deliver his shot. He has won 30 PBA titles, including a record 14 major championships which makes him the only one of eight bowlers in PBA tour history to achieve 30 wins.";
-                    break;
-                case 1:
-                    ProBowlerNameLoc.innerHTML = "WES MALOTT";
-                    ProBowlerTitleLoc.innerHTML = "National finals: 10 PBA Tour (1 majors)";
-                    ProBowlerDescLoc.innerHTML = "Wes Malott is an American professional ten-pin bowler and member of the Professional Bowlers Association (PBA). Originally from Pflugerville, Texas, he now resides in Fort Wayne, Indiana. He has won ten PBA Tour titles, and was the 2008–09 Chris Schenkel PBA Player of the Year. He won his lone major championship at the 2012–13 U.S. Open, and has finished runner-up in five other PBA major tournaments.";
-                    break;
-                case 2:
-                    ProBowlerNameLoc.innerHTML = "CHRIS BARNES";
-                    ProBowlerTitleLoc.innerHTML = "National finals: 19 PBA Tour (3 majors)";
-                    ProBowlerDescLoc.innerHTML = "Chris Barnes is an American professional bowler and member of the Professional Bowlers Association (PBA), who currently competes on both the PBA Tour and PBA50 Tour. He has also competed internationally as a member of Team USA. Barnes, a right-handed bowler, has been one of the leading professionals on the tour. He has won 19 PBA Tour titles and over $2.4 million (U.S.) in total prize money during his 20-year career.";
-                    break;
-            }
-        });
-    }
-    function ProBowlerIMGchanger(event) {
-        document.getElementById("ProBowlerIMG").src = event.target.src;
-    }
-
-
-    function init() {
-        setSlideIdx(slidesIDX);
-        startAnimate();
-    }
-    document.addEventListener("DOMContentLoaded", init);
-}
-
-function init() {
-    setSlideIdx(slidesIDX);
-    startAnimate();
-}
-document.addEventListener("DOMContentLoaded", init);
-
-
-
-if (document.URL.includes("index.html") || document.URL.includes("howtoplay.html")) {
-    var BowlingBallAnimation;
-    var isCollided = false;
-    var isCollided2 = false;
-    let Ball = document.querySelector("#ball");
-    let Pin = document.querySelector("#pin");
-    let Pin2 = document.querySelector("#pin2");
-    const BowlingBallPos = {x:0, y:0, width: 0};
-    const BowlingPinPos = {x:0, y:0, width: 0};
-    const BowlingPinPos2 = {x:0, y:0, width: 0};
-    var rotationBall = 0;
-    var rotationPin = 0;
-    var rotationPin2 = 0;
-    var RunBall = false;
-    var opacityVal = 0;
-
-    function BowlingAnimation() {
-        if (!BowlingBallAnimation) {
-            BowlingBallAnimation = setInterval(StartBowlingBallAnimation, 10);
-        }
-    }
-
-
-    var time = 500;
-    function StartBowlingBallAnimation() {
-        BowlingBallPos.x = Ball.offsetLeft;
-        BowlingPinPos.x = Pin.offsetLeft;
-        BowlingPinPos2.x = Pin2.offsetLeft;
-        BowlingBallPos.width = Ball.offsetWidth;
-        BowlingPinPos.width = Pin.offsetWidth;
-        BowlingPinPos2.width = Pin2.offsetWidth;
-        if (check(BowlingBallPos,BowlingPinPos)) {
-            isCollided = true;
-        }
-        if (check(BowlingBallPos,BowlingPinPos2)) {
-            isCollided2 = true;
-        }
-        Pin.style.transform = "rotate(" + rotationPin + "deg)";
-        Pin2.style.transform = "rotate(" + rotationPin2 + "deg)";
-        if (isCollided) {
-            rotationPin += 4;
-            if (rotationPin >= 90) {
-                rotationPin = 90;
-            }
-        }
-        if (isCollided2) {
-            rotationPin2 += 4;
-            if (rotationPin2 >= 90) {
-                rotationPin2 = 90;
-            }
-        }
-        if (RunBall && time >= 500) {
-            Ball.style.transform = "rotate(" + rotationBall + "deg)";
-            Ball.style.animation = "anime 3s linear";
-            if (rotationBall >= 360) {
-                rotationBall = 0;
-            }
-            Ball.addEventListener("animationend", function() {
-            rotationBall = 0;
-            opacityVal = 0;
-            Ball.style.opacity = opacityVal;
-            time = 0;
-            RunBall = false;
-            Ball.style.animation = 'none';
-            Ball.offsetHeight;
-            Ball.style.animation = null; 
-            });
-            rotationBall += 5;
-        }
-        else {
-            Ball.style.transform = "rotate(" + rotationBall + "deg)";
-            rotationBall = 0;
-        }
-        if (time >= 500 && !RunBall) {
-            isCollided = false;
-            rotationPin = 0;
-            isCollided2 = false;
-            rotationPin2 = 0;
-        }
-        if (opacityVal >= 1 && !RunBall && time >= 500) {
-            RunBall = true;
-        }
-        else {
-            if (time >= 500) {
-                opacityVal += 0.01;
-                if (opacityVal >= 1) {
-                    opacityVal = 1;
-                }
-            }
-            if (time <= 500) {
-                time++;
-            }
-        }
-        Ball.style.opacity = opacityVal;
-    }
-    BowlingAnimation();
-}
-
 
 
 
@@ -233,8 +22,6 @@ if ( document.URL.includes("history.html") ) {
 
     var listenBtn = document.getElementById("listen-btn");
     var pagenumber = document.getElementById("pagenotypeofbowling");
-    let prevpg = document.querySelector("#prev-pg-no");
-    let nextpg = document.querySelector("#next-pg-no");
     let bowlingpic = document.querySelector("#bowlingpic");
     let typeofbowlingdesc = document.querySelector("#Bowling-Type-Desc");
     var historyheader = document.querySelector("#History-Header");
@@ -348,7 +135,7 @@ if ( document.URL.includes("history.html") ) {
     setSlideIdx(0);
 }
 
-if ( document.URL.includes("simulator.html") ) {
+else if ( document.URL.includes("simulator.html") ) {
     var containerbtn = document.getElementsByClassName("Info-content-area-containertest")[0];
     var imgbtn = containerbtn.getElementsByTagName("img");
     var closebtn = document.getElementById("Close-button");
@@ -365,8 +152,6 @@ if ( document.URL.includes("simulator.html") ) {
     var rotateball;
     var pagenumber = document.getElementById("pagenotypeofbowling");
     var pgno = 1;
-    let prevpg = document.querySelector("#prev-pg-no");
-    let nextpg = document.querySelector("#next-pg-no");
     let Bowlingballtypearray = ["image/Bowling-ball-Reactive.png","image/Bowling-ball-Strike.png","image/Bowling-ball-Plastic.png"];
 
     for (let i = 0; i < imgbtn.length; i++) {
@@ -470,16 +255,6 @@ if ( document.URL.includes("simulator.html") ) {
     }
 
 
-
-
-
-
-
-
-
-
-
-
     let cir = document.querySelector("#Bowling-Ball-Simulator");
     const cirPos = {x: 0, y: 0, width: 0};
     let clickball = false;
@@ -564,11 +339,9 @@ if ( document.URL.includes("simulator.html") ) {
         }
         return true;
     }
-
 }
 
-
-if ( document.URL.includes("howtoplay.html") ) {
+else if ( document.URL.includes("howtoplay.html") ) {
     var expand = document.querySelector(".Read-more-btn");
     var contentexpand = document.querySelector("#steps-approach-container");
     expand.addEventListener("click", function(event) {
@@ -585,6 +358,211 @@ if ( document.URL.includes("howtoplay.html") ) {
           } 
     });
 }
+else {
+    MaxSlide = 4;
+    prev.addEventListener("click", function() {
+        stopAnimate();
+        if (!timeoutHandle) {
+            if (slidesIDX <= 0) {
+                slidesIDX = MaxSlide - 1;
+            }
+            else {
+                slidesIDX--;
+            }
+            startAnimate();
+            setSlideIdx(slidesIDX);
+        }
+    });
+    next.addEventListener("click", function() {
+        stopAnimate();
+        if (!timeoutHandle) {
+            if (slidesIDX >= Imglist.length - 1) {
+                slidesIDX = 0;
+            }
+            else {
+                slidesIDX++;
+            }
+            startAnimate();
+            setSlideIdx(slidesIDX);
+        }
+    });
+
+    for (let i = 0; i < dot.length; i++) {
+        dot[i].addEventListener("click", function() {
+            setSlideIdx(i);
+        });
+    }
+    function setSlideIdx(n) {
+        slidesIDX = n;
+        for (let i = 0; i < dot.length; i++) {
+            dot[i].addEventListener("click", ChangeImageBanner(slidesIDX));
+            dot[i].className = dot[i].className.replace(" active", "");
+        }
+        dot[slidesIDX].className += " active";
+    }
+    
+    function ChangeImageBanner(index) {
+        imagesrc.src = Imglist[index];
+    }
+    function slidesChanger() {
+        if (slidesIDX >= Imglist.length) {
+            slidesIDX = 0;
+        }
+        setSlideIdx(slidesIDX)
+        slidesIDX++;
+
+    }
+
+    function startAnimate() {
+        if (!timeoutHandle) {
+            timeoutHandle = setInterval(slidesChanger, 3000);
+        }
+    }
+    function stopAnimate() {
+        clearInterval(timeoutHandle);
+        timeoutHandle = null;
+    }
+
+
+
+    var ProBowlersIcon = document.getElementsByClassName("probtn");
+    var ProBowlerNameLoc = document.getElementById("pro-player-name");
+    var ProBowlerTitleLoc = document.getElementById("pro-player-title");
+    var ProBowlerDescLoc = document.getElementById("pro-player-desc");
+    for (let i = 0; i < ProBowlersIcon.length; i++) {
+        ProBowlersIcon[i].children[0].addEventListener("click", ProBowlerIMGchanger);
+        ProBowlersIcon[i].children[0].addEventListener("click", function() {
+            switch(i) {
+                case 0:
+                    ProBowlerNameLoc.innerHTML = "JASON BELMONTE";
+                    ProBowlerTitleLoc.innerHTML = "National finals: 30 PBA Tour (14 majors)";
+                    ProBowlerDescLoc.innerHTML = "Jason Belmonte is an Australian professional ten-pin bowler. He plays on the PBA Tour in the United States and in world events. He is known for being one of the first bowlers to gain media attention for using the two handed approach style to deliver his shot. He has won 30 PBA titles, including a record 14 major championships which makes him the only one of eight bowlers in PBA tour history to achieve 30 wins.";
+                    break;
+                case 1:
+                    ProBowlerNameLoc.innerHTML = "WES MALOTT";
+                    ProBowlerTitleLoc.innerHTML = "National finals: 10 PBA Tour (1 majors)";
+                    ProBowlerDescLoc.innerHTML = "Wes Malott is an American professional ten-pin bowler and member of the Professional Bowlers Association (PBA). Originally from Pflugerville, Texas, he now resides in Fort Wayne, Indiana. He has won ten PBA Tour titles, and was the 2008–09 Chris Schenkel PBA Player of the Year. He won his lone major championship at the 2012–13 U.S. Open, and has finished runner-up in five other PBA major tournaments.";
+                    break;
+                case 2:
+                    ProBowlerNameLoc.innerHTML = "CHRIS BARNES";
+                    ProBowlerTitleLoc.innerHTML = "National finals: 19 PBA Tour (3 majors)";
+                    ProBowlerDescLoc.innerHTML = "Chris Barnes is an American professional bowler and member of the Professional Bowlers Association (PBA), who currently competes on both the PBA Tour and PBA50 Tour. He has also competed internationally as a member of Team USA. Barnes, a right-handed bowler, has been one of the leading professionals on the tour. He has won 19 PBA Tour titles and over $2.4 million (U.S.) in total prize money during his 20-year career.";
+                    break;
+            }
+        });
+    }
+    function ProBowlerIMGchanger(event) {
+        document.getElementById("ProBowlerIMG").src = event.target.src;
+    }
+
+
+    function init() {
+        setSlideIdx(slidesIDX);
+        startAnimate();
+    }
+    document.addEventListener("DOMContentLoaded", init); 
+}
+
+
+
+if (document.URL.includes("index.html") || document.URL.includes("howtoplay.html")) {
+    var BowlingBallAnimation;
+    var isCollided = false;
+    var isCollided2 = false;
+    let Ball = document.querySelector("#ball");
+    let Pin = document.querySelector("#pin");
+    let Pin2 = document.querySelector("#pin2");
+    const BowlingBallPos = {x:0, y:0, width: 0};
+    const BowlingPinPos = {x:0, y:0, width: 0};
+    const BowlingPinPos2 = {x:0, y:0, width: 0};
+    var rotationBall = 0;
+    var rotationPin = 0;
+    var rotationPin2 = 0;
+    var RunBall = false;
+    var opacityVal = 0;
+
+    function BowlingAnimation() {
+        if (!BowlingBallAnimation) {
+            BowlingBallAnimation = setInterval(StartBowlingBallAnimation, 10);
+        }
+    }
+
+
+    var time = 500;
+    function StartBowlingBallAnimation() {
+        BowlingBallPos.x = Ball.offsetLeft;
+        BowlingPinPos.x = Pin.offsetLeft;
+        BowlingPinPos2.x = Pin2.offsetLeft;
+        BowlingBallPos.width = Ball.offsetWidth;
+        BowlingPinPos.width = Pin.offsetWidth;
+        BowlingPinPos2.width = Pin2.offsetWidth;
+        if (check(BowlingBallPos,BowlingPinPos)) {
+            isCollided = true;
+        }
+        if (check(BowlingBallPos,BowlingPinPos2)) {
+            isCollided2 = true;
+        }
+        Pin.style.transform = "rotate(" + rotationPin + "deg)";
+        Pin2.style.transform = "rotate(" + rotationPin2 + "deg)";
+        if (isCollided) {
+            rotationPin += 4;
+            if (rotationPin >= 90) {
+                rotationPin = 90;
+            }
+        }
+        if (isCollided2) {
+            rotationPin2 += 4;
+            if (rotationPin2 >= 90) {
+                rotationPin2 = 90;
+            }
+        }
+        if (RunBall && time >= 500) {
+            Ball.style.transform = "rotate(" + rotationBall + "deg)";
+            Ball.style.animation = "anime 3s linear";
+            if (rotationBall >= 360) {
+                rotationBall = 0;
+            }
+            Ball.addEventListener("animationend", function() {
+            rotationBall = 0;
+            opacityVal = 0;
+            Ball.style.opacity = opacityVal;
+            time = 0;
+            RunBall = false;
+            Ball.style.animation = 'none';
+            Ball.offsetHeight;
+            Ball.style.animation = null; 
+            });
+            rotationBall += 5;
+        }
+        else {
+            Ball.style.transform = "rotate(" + rotationBall + "deg)";
+            rotationBall = 0;
+        }
+        if (time >= 500 && !RunBall) {
+            isCollided = false;
+            rotationPin = 0;
+            isCollided2 = false;
+            rotationPin2 = 0;
+        }
+        if (opacityVal >= 1 && !RunBall && time >= 500) {
+            RunBall = true;
+        }
+        else {
+            if (time >= 500) {
+                opacityVal += 0.01;
+                if (opacityVal >= 1) {
+                    opacityVal = 1;
+                }
+            }
+            if (time <= 500) {
+                time++;
+            }
+        }
+        Ball.style.opacity = opacityVal;
+    }
+    BowlingAnimation();
+}
+
 
 function check(cir, other) {
     var distance = Math.sqrt((cir.x - other.x) * (cir.x - other.x) + (cir.y - other.y) * (cir.y -  other.y));

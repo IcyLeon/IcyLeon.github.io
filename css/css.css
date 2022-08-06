@@ -506,14 +506,12 @@ body {
     min-height: 80px;
     box-shadow: 0px 0px 40px 5px black;
 }
-#Bowling-Experience-container, #Bowling-type-container, #Bowling-Simulation-container {
+#Bowling-Experience-container, #Bowling-type-container, #Bowling-Simulation-container, #Bowling-rules-container {
     position: relative;
     width: 100%;
     min-height: 80px;
 }
-
-
-#Margin-top-header {
+#Bowling-rules-container {
     margin-top: 50px;
 }
 
