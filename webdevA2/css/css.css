@@ -1,0 +1,1025 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Quicksand;
+    box-sizing: border-box;
+}
+
+/* Set a smooth transitioning of the page */
+html{
+    scroll-behavior:smooth;
+}
+.Info-content-area-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Info-content-area-containertest {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.content-banner-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+body {
+    overflow: visible;
+    overflow-x: hidden;
+    background-color: #111;
+    font-family: Quicksand;
+}
+/* Set a header size, background and positioning*/
+.header-background {
+    position: fixed;
+    margin-top: -50px;
+    height: 50px;
+    width: 100vw;
+    background-color: black;
+    z-index: 3;
+}
+.space {
+    display: flex;
+    justify-content: space-between;
+}
+
+#Flex-direction-row-reverse {
+    flex-direction: row-reverse;
+}
+
+/* Create a container for the nav buttons with display flex*/
+.btn-header-container {
+    font-weight: bold;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+#btn-canvas-container {
+    position: absolute;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 100%;
+    min-width: 50px;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+.icon {
+    color:white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+
+/* Styling of the nav buttons */
+.nav_btn {
+    position: relative;
+    text-decoration: none;
+    border: none;
+    font-size: 110%;
+    color: #ccc;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2rem;
+}
+.nav_btn:hover, .footer_nav_btn:hover {
+    color: white;
+    text-shadow: 0 0 20px white;
+}
+.nav_btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 5px;
+    background: white;
+    left: 0;
+    top: 0;
+    transition: 0.3s;
+}
+.nav_btn:hover::after {
+    transform: scaleX(1);
+}
+
+/* Header Image container*/
+.header-Img-logo-container {
+    position: relative;
+    margin-left: 50px;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-Img-logo-container a, .footer-Img-logo-container a {
+    color: white;
+    width: 100%;
+    text-decoration: none;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.Image-slideshow-container {
+    position: relative;
+    margin-top: 50px;
+}
+#banner-img {
+    width: 100%;
+}
+#BowlingPins {
+    position: absolute;
+    width: 23.25%;
+    left: 37.25%;
+    top: 14%;
+    cursor: pointer;
+}
+#BowlingBall {
+    width: 10.25%;
+    left: 50.25%;
+    top: 50%;
+    cursor: pointer;
+    position: absolute;
+}
+.banner-content-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#bowling-simulator-relative-slideshow {
+    position: relative;
+}
+
+#Welcome-text-container {
+    position: absolute;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    color: white;
+}
+#Welcome-text-container h1 {
+    font-size: 320%;
+    text-align: center;
+    text-shadow: 0 0 10px rgb(0 0 0);
+}
+
+.DotContainer {
+    position: absolute;
+    bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Dot {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    margin: 0 8px;
+    border: solid 2px rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transition: 0.5s background-color;
+}
+.active, .Dot:hover {
+    background-color: rgba(255,255,255,1);
+}
+
+.next-prev-btn-container {
+    position: absolute;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.prev-btn {
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 30px;
+    background-color: white;
+    box-shadow: 0px 0px 40px 5px black;
+    z-index: 2;
+}
+.next-btn {
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 30px;
+    background-color: white;
+    box-shadow: 0px 0px 40px 5px black;
+    z-index: 2;
+}
+
+
+
+.next-prev-btn-container img {
+    position: relative;
+    width: 20%;
+    object-fit: contain;
+}
+
+#Introduction-to-Bowling-container {
+    width: 100%;
+    position: relative;
+}
+.content-header-container {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+}
+.content-header-container h1 {
+    position: relative;
+    font-family: Poppins;
+    font-size: 50px;
+    color: #20ce65;
+    text-align: center;
+}
+.content-header-container p {
+    position: relative;
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Poppins;
+    color: white;
+    margin-top: -10px;
+}
+
+
+
+
+.content-container {
+    position: relative;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 25px;
+    padding: 35px;
+    flex-flow: row wrap;
+}
+#Pro-Bowler-Info-content-area-container {
+    position: relative;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 0.5fr 1fr 1.5fr;
+    grid-template-areas: "sidebar photo text";
+}
+#prev-pg-no, #next-pg-no {
+    position:relative;
+}
+#pro-player-title {
+    color:#a9afc3;
+    font-weight: bold;
+}
+#steps-approach-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s;
+}
+
+.content-img-container {
+    flex: 1 1 30%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: photo;
+}
+.footer-img-container {
+    flex: 1 1 60%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-text-container {
+    flex: 1 1 30%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 12px;
+    flex-direction: row;
+}
+.footer-copyright-text {
+    flex: 1 1 10%;
+    color: white;
+    padding: 10px;
+}
+
+
+
+
+
+.footer_nav_btn {
+    position: relative;
+    text-decoration: none;
+    border: none;
+    font-size: 110%;
+    color: #ccc;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-Img-logo-container {
+    position: relative;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+#content-img-Personal-Experience-container {
+    flex: 1 1 30%;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
+    height: 80%;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    grid-area: sidebar;
+}
+
+.content-img-container img, #content-img-Personal-Experience-container img, .content-img-container iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.content-text-container {
+    flex: 1 1 60%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-direction: column;
+    grid-area: text;
+}
+
+.content-text-header-container {
+    color: #20ce65;
+    display: flex;
+    flex-direction: column;
+}
+.content-text-header-container h1 {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Poppins;
+}
+
+.flex-directionColumn {
+    flex-direction: column;
+}
+
+
+
+.content-text-desc-container {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.content-text-desc-container p, .content-text-btn-container p, .content-text-desc-container ul li {
+    list-style-type: none;
+    color: white;
+    margin-bottom: 15px;
+    font-size: 110%;
+}
+.content-text-desc-container ul span {
+    color:#a9afc3;
+}
+
+
+.content-text-btn-container {
+    border: 2px solid transparent;
+}
+
+#position-subtext {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* Styling of the read-more button */
+.Read-more-btn {
+    font-size: 100%;
+    padding: 10px 25px;
+    border: 1px solid #20ce65;
+    color: #20ce65;
+    background-color: transparent;
+    transition: 0.3s;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+.Read-more-btn:hover {
+    background-color: #20ce65;
+    color: white;
+}
+#listen-btn {
+    font-size: 110%;
+    padding: 12px 30%;
+    border: 1px solid #20ce65;
+    color: #20ce65;
+    background-color: transparent;
+    transition: 0.3s;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+
+
+
+
+#Bowling-animation-container, #Bowling-Pinsetter-container, #Bowling-Ball-Info-container, #Bowling-Tutorial-container, #Bowling-Location-container {
+    position: relative;
+    background-color: #0f161c;
+    width: 100%;
+    min-height: 80px;
+    box-shadow: 0px 0px 40px 5px black;
+}
+#Bowling-Experience-container, #Bowling-type-container, #Bowling-Simulation-container, #Bowling-rules-container {
+    position: relative;
+    width: 100%;
+    min-height: 80px;
+}
+#Bowling-rules-container {
+    margin-top: 50px;
+}
+
+
+
+.bowling-animation-content-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+#ball {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 80%;
+    opacity: 0;
+}
+
+@keyframes anime {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+
+
+#pagenotypeofbowling {
+    font-weight:bold;
+}
+
+#pin {
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    height: 90%;
+}
+#pin2 {
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+    height: 90%;
+}
+.bowling-animation-content-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+#Bowling-Location-container, .footer-container {
+    position: relative;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mobile-container {
+    margin: auto;
+    background-color: #555;
+    color: white;
+    border-radius: 10px;
+    visibility: hidden;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+  }
+  
+  .topnav #myLinks {
+    display: block;
+  }
+  
+  .topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+  }
+  
+  .topnav a.icon {
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .probtn {
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+    cursor: pointer;
+    border: 2px solid white;
+  }
+  .probtn:hover {
+    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 1);
+  }
+
+
+  #ProBowler-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
+
+
+
+.Bowling-Ball-Desc {
+    color:white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px 10px 30px;
+}
+#flex-row-wrap {
+    flex-flow: row wrap;
+}
+
+.Bowling-Ball-Desc p {
+    text-align: center;
+    padding: 10px;
+}
+
+
+
+
+
+
+
+  #Bowling-location-container {
+    background-color: #0f161c;
+  }
+
+
+  .wrapper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 18rem);
+    justify-content: center;
+  }
+  
+  .container {
+    overflow: hidden;
+    box-shadow: 0px 2px 8px 0px rgba(0,0,0,0);
+    background-color: white;
+    min-height: 350px;
+    text-align: center;
+    position: relative;
+    margin: 0.5rem;
+    margin-bottom: 1.5rem;
+    transform: scale(1);
+    transition: 0.5s transform;
+  }
+  .container:hover {
+    transform: scale(1.05);
+  }
+
+  .container img {
+    position: relative;
+    height: 40%;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+
+  .name {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .description {
+    margin: 1rem 2rem;
+    font-size: 0.9rem;
+  }
+  
+  .btn {
+    width: 100%;
+    border: none;
+    font-size: 130%;
+    font-weight: bold;
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    background-color: blue;
+  }
+  .card-text {
+    height: 60%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+
+
+  #content-history-container {
+    background-color: rgba(0,0,0,0.5);
+    width: 80%;
+    height: 80%;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  #Close-button {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 10px;
+}
+#Close-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#Popout {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+#Popout-margin {
+    margin: 30px;
+    background: rgba(0,0,0,1);
+}
+
+#Popout #content-img-Personal-Experience-container {
+    flex-direction: row;
+}
+
+#Bowling-simulation-game-container {
+    width: 100%;
+    height: 100%;
+}
+
+#Bowling-simulation-game-content-container {
+    position: relative;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 35px;
+    flex-flow: row wrap;
+}
+#Bowling-Simulator-img-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#Bowling-Simulator-text-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+    flex-direction: column;
+}
+
+.blue-ball {
+    width: 30px;
+    height: 30px;
+    background-color: cyan;
+    transform: translate(-50%, -50%);
+    position:relative;
+    top: 0;
+    left: 0;
+    border-radius: 100px;
+}
+#Bowling-Ball-Simulator {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+#Bowling-pin-arrangement {
+    position:absolute;
+    height: 100%;
+    right: 20px;
+    height: 80%;
+}
+#Bowling-pin-arrangement .blue-ball {
+    position: absolute;
+    background-color: red;
+    right: 0;
+    top: 12%;
+}
+
+#Bowling-pin-arrangement .blue-ball:nth-child(1) {
+    top: 37%;
+}
+#Bowling-pin-arrangement .blue-ball:nth-child(2) {
+    top: 62%;
+}
+#Bowling-pin-arrangement .blue-ball:nth-child(3) {
+    top: 87%;
+}
+
+
+@media screen and (min-width: 1024px) {
+    /* For pc only: */
+    .mobile-container {
+        visibility: hidden;
+    }
+}
+
+
+@media screen and (max-width: 1023px) {
+    .mobile-container {
+        visibility: hidden;
+    }
+    .blue-ball {
+        width: 25px;
+        height: 25px;
+    }
+    .Dot {
+        width: 15px;
+        height: 15px;
+    }
+    #Welcome-text-container h1 {
+        font-size: 220%;
+    }
+    .footer-copyright-text p {
+        font-size: 13px;
+    }
+    .content-text-header-container p, .content-text-desc-container ul li {
+        font-size: 15px;
+    }
+    .content-text-desc-container p, .content-text-btn-container p {
+        text-align: center;
+        font-size: 20px;
+    }
+    .content-text-header-container h1 {
+        font-size: 35px;
+    }
+
+
+    #Pro-Bowler-Info-content-area-container {
+        grid-template-columns: auto auto auto;
+        grid-template-areas:
+            "sidebar photo photo"
+            "text text text";
+        max-width: 85%;
+    }
+    /* For mobile phones and tablet: */
+    .content-container {
+        gap: 8px;
+    }
+    .content-text-container {
+        display:block;
+        flex: 1 1 100%;
+        gap: 0px;
+    }
+    .footer-text-container {
+        flex-direction: column;
+    }
+    .Read-more-btn {
+        padding: 8px 18px;
+    }
+    #listen-btn, .footer_nav_btn {
+        padding: 7px 18%;
+    }
+
+    .content-text-desc-container, .content-text-btn-container {
+        text-align: center;
+        font-size: 20px;
+    }
+    .content-text-desc-container p {
+        padding: 15px;
+    }
+    .content-text-header-container, .content-text-desc-container, .content-text-btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .prev-btn, .next-btn {
+        width: 30px;
+        height: 30px;
+    }
+    .content-img-container img {
+        width: 70%;
+    }
+    .content-header-container h1 {
+        font-size: 30px;
+    }
+    .content-header-container p {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /*phone: */
+    .mobile-container {
+        visibility: hidden;
+    }
+    .blue-ball {
+        width: 20px;
+        height: 20px;
+    }
+    .btn-header-container {
+        display: none;
+    }
+    #btn-canvas-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #Welcome-text-container h1 {
+        font-size: 110%;
+    }
+    .header-Img-logo-container {
+        margin-left: 0px;
+    }
+    .Dot {
+        display: none;
+    }
+    .content-text-header-container h1 {
+        font-size: 25px;
+    }
+
+    .content-text-desc-container p, .content-text-header-container p, .footer-copyright-text p {
+        text-align: center;
+        font-size: 12px;
+    }
+    .space {
+        justify-content: center;
+    }
+    #Bowling-animation-container {
+        min-height: 50px;
+    }
+    #Pro-Bowler-Info-content-area-container {
+        grid-template-columns: auto;
+        grid-template-areas:
+            "sidebar"
+            "photo"
+            "text";
+        max-width: 80%;
+    }
+    #content-img-Personal-Experience-container {
+        flex-direction: row;
+        padding: 0;
+
+    }
+
+    .probtn {
+        width: 60px;
+        height: 60px;
+    }
+    #listen-btn {
+        font-size: 80%;
+        padding: 6px 15%;
+    }
+}
+
+
+#Bowling-Simulator-img-container img {
+    width: 100%;
+}
